@@ -1,0 +1,453 @@
+```html
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marinescu & Asociatii | Casă de Avocatură</title>
+  <meta name="description" content="Casă de avocatură – drept fiscal, insolvență, litigii civile, asistență juridică ocazională în materie penală. București." />
+
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel:#121826;
+      --text:#e8eefc;
+      --muted:#a8b3cf;
+      --accent:#d6b25e;
+      --line:rgba(255,255,255,.1);
+      --radius:16px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:linear-gradient(180deg,#0b0f17,#070a10);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    a:hover{opacity:.9}
+    .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+
+    /* Header */
+    .site-header{
+      background:rgba(11,15,23,.85);
+      border-bottom:1px solid var(--line);
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(10px);
+    }
+    .header-inner{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 0;gap:12px;
+    }
+    .brand{
+      display:flex;gap:10px;align-items:center;
+      min-width:220px;text-decoration:none;
+    }
+    .brand-mark{
+      width:38px;height:38px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#f0d58a);
+      color:#1a1406;display:grid;place-items:center;
+      font-weight:900;
+    }
+    .brand-text strong{display:block}
+    .brand-text small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+    .nav a{
+      margin-left:14px;color:var(--muted);text-decoration:none;
+      font-size:14px;padding:8px 10px;border-radius:10px;
+    }
+    .nav a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+    @media (max-width:860px){.nav{display:none}.brand{min-width:unset}}
+
+    /* Hero */
+    .hero{padding:56px 0 34px}
+    .hero-inner{
+      display:grid;grid-template-columns:1.2fr .8fr;
+      gap:24px;align-items:stretch;
+    }
+    .eyebrow{
+      text-transform:uppercase;font-size:12px;color:var(--accent);
+      letter-spacing:1px;font-weight:800;margin:0 0 10px;
+    }
+    h1{margin:0 0 12px;font-size:clamp(28px,4vw,44px);line-height:1.12}
+    .lead{color:var(--muted);font-size:16px;margin:0}
+    .hero-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:20px;
+    }
+    .hero-card h3{margin:0 0 10px;font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:12px}
+    .divider{height:1px;background:var(--line);margin:14px 0}
+
+    /* Sections */
+    .section{padding:58px 0}
+    .section-alt{
+      background:rgba(255,255,255,.03);
+      border-top:1px solid rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .section h2{margin:0 0 14px;font-size:26px}
+
+    /* About */
+    .section-about{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
+    }
+    .about-grid{
+      display:grid;grid-template-columns:1.2fr .8fr;
+      gap:24px;align-items:start;
+    }
+    .about-text p{color:var(--muted);margin:0 0 12px}
+    .about-text strong{color:var(--text)}
+    .about-values{
+      list-style:none;padding:0;margin:14px 0 0;
+      display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+    }
+    .about-values li{
+      background:var(--panel);
+      border:1px solid var(--line);
+      padding:10px 12px;border-radius:var(--radius);
+      font-size:14px;
+    }
+    .about-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:20px;
+    }
+    .about-card h3{margin:0 0 6px;font-size:16px}
+    .about-card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Cards */
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .card h3{margin:0 0 6px;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Team */
+    .team{display:grid;gap:16px;margin-top:8px}
+    .person{
+      display:grid;grid-template-columns:60px 1fr;gap:14px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .avatar{
+      width:60px;height:60px;border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),#f0d58a);
+      color:#1a1406;display:grid;place-items:center;
+      font-weight:900;
+    }
+    .role{
+      color:var(--accent);
+      font-size:13px;margin:2px 0 6px;font-weight:800;
+    }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:20px;align-items:start;
+    }
+    .contact-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:20px;
+    }
+    .contact-card p{margin:0 0 12px;color:var(--muted)}
+    .contact-card a{color:var(--text);text-decoration:none}
+    .contact-card a:hover{text-decoration:underline}
+    .map-embed iframe{
+      width:100%;height:320px;border:0;border-radius:var(--radius);
+      background:#000;
+    }
+
+    /* Bullets */
+    .bullets{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+
+    /* Footer */
+    .site-footer{
+      border-top:1px solid var(--line);
+      padding:22px 0;text-align:center;color:var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero-inner,.about-grid,.cards,.contact-grid{grid-template-columns:1fr}
+      .about-values{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Acasă">
+        <div class="brand-mark">⚖︎</div>
+        <div class="brand-text">
+          <strong>Marinescu & Asociatii</strong>
+          <small>Casă de avocatură</small>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Navigație">
+        <a href="#despre">Despre</a>
+        <a href="#expertiza">Expertiză</a>
+        <a href="#echipa">Colaboratori</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">București • Fiscal • Insolvență • Litigii</p>
+          <h1>Rigoare juridică. Analiză fiscală. Reprezentare fermă.</h1>
+          <p class="lead">
+            Casă de avocatură specializată în drept fiscal, procedura insolvenței și litigii
+            de drept civil, oferind asistență juridică strategică și reprezentare fermă
+            în fața instanțelor și autorităților.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Servicii principale">
+          <h3>Practici</h3>
+          <ul class="bullets">
+            <li>Drept fiscal (contestații și litigii)</li>
+            <li>Insolvență (creditori / debitori)</li>
+            <li>Litigii civile (patrimoniale, obligații)</li>
+            <li>Drept penal (ocazional, conex)</li>
+          </ul>
+          <div class="divider"></div>
+          <p class="muted small">
+            *Conținut orientativ — personalizează numele firmei, contactul și profilurile echipei.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Despre -->
+    <section class="section section-about" id="despre">
+      <div class="container about-grid">
+        <div class="about-text">
+          <p class="eyebrow">Despre noi</p>
+          <h2>Specializare, strategie și claritate în decizie</h2>
+
+          <p>
+            <strong>Marinescu & Asociatii</strong> este o casă de avocatură din București, specializată
+            în <strong>drept fiscal</strong>, <strong>procedura insolvenței</strong> și
+            <strong>litigii de drept civil</strong>, oferind asistență juridică adaptată
+            complexității fiecărei spețe.
+          </p>
+
+          <p>
+            Activitatea noastră se concentrează pe gestionarea relației dintre contribuabili
+            și autoritățile fiscale, protejarea intereselor creditorilor și debitorilor
+            în cadrul procedurilor de insolvență, precum și reprezentarea clienților
+            în litigii civile cu grad ridicat de dificultate.
+          </p>
+
+          <p>
+            În funcție de specificul cauzei, acordăm <strong>asistență juridică și în materie
+            de drept penal</strong>, în special în dosare conexe activităților economice,
+            fiscale sau patrimoniale.
+          </p>
+
+          <p>
+            Abordarea noastră este una <strong>analitică și orientată spre soluții</strong>,
+            fundamentată pe cunoașterea practicii judiciare și pe o comunicare constantă,
+            predictibilă și transparentă cu clientul.
+          </p>
+
+          <ul class="about-values">
+            <li>⚖️ Rigoare juridică și analiză fiscală</li>
+            <li>🔐 Confidențialitate și loialitate profesională</li>
+            <li>📚 Practică judiciară actualizată</li>
+            <li>🤝 Reprezentare fermă și onestă</li>
+          </ul>
+        </div>
+
+        <div class="about-card" aria-label="Misiune și viziune">
+          <h3>Misiunea noastră</h3>
+          <p>
+            Să oferim soluții juridice clare și aplicabile, fundamentate pe analiză,
+            strategie și execuție riguroasă, pentru protejarea intereselor clientului.
+          </p>
+
+          <div class="divider"></div>
+
+          <h3>Viziune</h3>
+          <p>
+            Construirea unor parteneriate juridice durabile, bazate pe încredere,
+            profesionalism și comunicare predictibilă.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertiză -->
+    <section class="section" id="expertiza">
+      <div class="container">
+        <h2>Arii de expertiză</h2>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Drept fiscal</h3>
+            <p>
+              Asistență în relația cu autoritățile fiscale: inspecții, contestații administrative,
+              litigii fiscale și măsuri de conformare.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Procedura insolvenței</h3>
+            <p>
+              Reprezentarea creditorilor și debitorilor: înscrieri la masa credală, contestații,
+              reorganizare judiciară și faliment.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Litigii de drept civil</h3>
+            <p>
+              Litigii patrimoniale, răspundere contractuală/delictuală, recuperări creanțe,
+              executare silită și măsuri asigurătorii.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Drept penal (ocazional)</h3>
+            <p>
+              Asistență în cauze penale conexe activităților economice, fiscale sau patrimoniale,
+              în funcție de specificul speței.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colaboratori -->
+    <section class="section section-alt" id="echipa">
+      <div class="container">
+        <h2>Avocați colaboratori</h2>
+        <p class="muted" style="margin:0 0 16px;">
+          Echipa este formată din avocați cu experiență în drept fiscal, insolvență și litigii,
+          colaborând punctual în funcție de natura și complexitatea fiecărei cauze.
+        </p>
+
+        <div class="team">
+          <article class="person">
+            <div class="avatar" aria-hidden="true">W</div>
+            <div>
+              <h3 style="margin:0;">Av. W. Nume Prenume</h3>
+              <p class="role">Coordonator • Drept fiscal / insolvență / litigii</p>
+              <p class="muted" style="margin:0;">
+                Contestații și litigii fiscale, insolvență (creditori/debitori), litigii civile patrimoniale.
+              </p>
+            </div>
+          </article>
+
+          <article class="person">
+            <div class="avatar" aria-hidden="true">F</div>
+            <div>
+              <h3 style="margin:0;">Av. Colaborator</h3>
+              <p class="role">Drept fiscal & contencios administrativ</p>
+              <p class="muted" style="margin:0;">
+                Asistență în inspecții fiscale, contestații, litigii, proceduri administrative conexe.
+              </p>
+            </div>
+          </article>
+
+          <article class="person">
+            <div class="avatar" aria-hidden="true">I</div>
+            <div>
+              <h3 style="margin:0;">Av. Colaborator</h3>
+              <p class="role">Insolvență & restructurare</p>
+              <p class="muted" style="margin:0;">
+                Proceduri de insolvență, reorganizări, contestații, recuperări creanțe, strategie procedurală.
+              </p>
+            </div>
+          </article>
+
+          <article class="person">
+            <div class="avatar" aria-hidden="true">P</div>
+            <div>
+              <h3 style="margin:0;">Av. Colaborator</h3>
+              <p class="role">Penal (ocazional, conex economic/fiscal)</p>
+              <p class="muted" style="margin:0;">
+                Asistență juridică în cauze penale conexe activităților economice, fiscale sau patrimoniale.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <p style="margin:0 0 10px;"><strong>Adresă</strong></p>
+            <p>
+              Splaiul Unirii nr. 16, etaj 2, camerele 208–209<br />
+              Sector 4, Municipiul București<br />
+              Muntenia Business Center
+            </p>
+
+            <p style="margin:0 0 10px;"><strong>Telefon</strong></p>
+            <p><a href="tel:+40 722 651 340">+40 722 651 340</a></p>
+
+            <p style="margin:0 0 10px;"><strong>Email</strong></p>
+            <p><a href="mailto:av.marinescu@gmail.com">av.marinescu@gmail.com</a></p>
+
+            <div class="divider"></div>
+
+            <p class="muted small" style="margin:0;">
+              Programările se fac telefonic sau prin email. Informațiile de pe acest site au caracter informativ și nu reprezintă consultanță juridică.
+            </p>
+          </div>
+
+          <div class="map-embed" aria-label="Hartă Google Maps">
+            <iframe
+              title="Google Maps - Splaiul Unirii nr. 16, București"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Splaiul%20Unirii%2016%20Muntenia%20Business%20Center%20Bucuresti&output=embed">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p style="margin:0;">© <span id="year"></span> Marinescu & Asociatii. Toate drepturile rezervate.</p>
+      <p class="muted small" style="margin:6px 0 0;">
+        Informațiile de pe acest site au caracter informativ și nu reprezintă consultanță juridică.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
